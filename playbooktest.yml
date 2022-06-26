@@ -10,6 +10,9 @@
   - name: deploy file
     copy: src=website dest=var/www/html
     notify: restart httpd
+  handlers:
+  - name: restart httpd
+    service: name=httpd state=restarted
   - name: install docker
     yum: name=docker state=present
   - name: start docker
